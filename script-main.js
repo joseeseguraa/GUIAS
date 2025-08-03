@@ -79,3 +79,30 @@ function buscarEnTodosLosJuegos(termino) {
   // Implementar búsqueda cuando tengamos más contenido
   return resultados;
 }
+
+let lastScroll = 0;
+const header = document.querySelector('header');
+const delta = 10; // Umbral mínimo para detectar scroll significativo
+
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
+
+  // Evitar cambios si el scroll es menor que delta
+  if (Math.abs(currentScroll - lastScroll) <= delta) return;
+
+  if (currentScroll <= 0) {
+    header.style.top = '0';
+    return;
+  }
+
+  if (currentScroll > lastScroll) {
+    // Scroll hacia abajo -> ocultar header
+    header.style.top = '-100px'; // ajusta según altura del header
+  } else {
+    // Scroll hacia arriba -> mostrar header
+    header.style.top = '0';
+  }
+
+  lastScroll = currentScroll;
+});
+
