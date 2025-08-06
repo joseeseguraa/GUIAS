@@ -43,7 +43,7 @@ const personajes = [
     elemento: "Fuego",
     faccion: "Belobog Heavy Industries",
     imagen: "placeholder",
-    descripción: "Tanque/aturdidor de fuego con gran resistencia."
+    descripcion: "Tanque/aturdidor de fuego con gran resistencia."
   },
   {
     nombre: "Ben Bigger",
