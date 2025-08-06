@@ -162,10 +162,8 @@ function crearCardPersonaje(personaje) {
   card.setAttribute('data-role', personaje.rol);
   
   card.innerHTML = `
-    <div class="character-image">
-      <div class="character-placeholder ${personaje.rareza.toLowerCase()}-border">
-        <span class="character-initial">${personaje.nombre.charAt(0)}</span>
-      </div>
+    <div class="character-image ${personaje.rareza.toLowerCase()}-border">
+      <!-- Aquí irá la imagen del personaje -->
       <div class="character-rarity ${personaje.rareza.toLowerCase()}">${personaje.rareza}</div>
     </div>
     <div class="character-info">
@@ -234,10 +232,7 @@ function setupFiltros() {
 
 // Función para abrir la guía de un personaje
 function abrirGuiaPersonaje(personaje) {
-  // Por ahora mostrar alert, luego dirigir a página individual
-  alert(`Abriendo guía de ${personaje.nombre}\n\nRol: ${getRoleName(personaje.rol)}\nElemento: ${personaje.elemento}\nFacción: ${personaje.faccion}\n\n¡Próximamente tendrás acceso a la guía completa!`);
-  
-  // Futuro: window.location.href = `personaje.html?name=${personaje.nombre.replace(' ', '-').toLowerCase()}`;
+  window.location.href = `personaje.html?character=${encodeURIComponent(personaje.nombre)}`;
 }
 
 // Función de búsqueda de personajes
