@@ -5,7 +5,7 @@ const personajes = [
     rol: "stun",
     rareza: "A",
     elemento: "Eléctrico",
-    faccion: "Cunning Hares",
+    faccion: "Liebres Astutas",
     imagen: "placeholder", // Aquí irían las URLs reales de las imágenes
     descripcion: "Agente de aturdimiento eléctrico especializada en combos."
   },
@@ -14,7 +14,7 @@ const personajes = [
     rol: "attack",
     rareza: "A",
     elemento: "Físico",
-    faccion: "Cunning Hares",
+    faccion: "Liebres Astutas",
     imagen: "placeholder",
     descripcion: "Atacante a distancia con armas duales."
   },
@@ -23,7 +23,7 @@ const personajes = [
     rol: "support",
     rareza: "A",
     elemento: "Éter",
-    faccion: "Cunning Hares",
+    faccion: "Liebres Astutas",
     imagen: "placeholder",
     descripcion: "Soporte que debilita enemigos con corrupción de éter."
   },
@@ -32,7 +32,7 @@ const personajes = [
     rol: "attack",
     rareza: "S",
     elemento: "Hielo",
-    faccion: "Victoria Housekeeping",
+    faccion: "Servicios Domesticos Victoria",
     imagen: "placeholder",
     descripcion: "DPS principal de hielo con ataques devastadores."
   },
@@ -41,7 +41,7 @@ const personajes = [
     rol: "stun",
     rareza: "S",
     elemento: "Fuego",
-    faccion: "Belobog Heavy Industries",
+    faccion: "Industrias Belobog",
     imagen: "placeholder",
     descripcion: "Tanque/aturdidor de fuego con gran resistencia."
   },
@@ -50,7 +50,7 @@ const personajes = [
     rol: "defense",
     rareza: "A",
     elemento: "Fuego",
-    faccion: "Belobog Heavy Industries",
+    faccion: "Industrias Belobog",
     imagen: "placeholder",
     descripcion: "Defensor especializado en proteger al equipo."
   },
@@ -59,7 +59,7 @@ const personajes = [
     rol: "attack",
     rareza: "A",
     elemento: "Físico",
-    faccion: "Victoria Housekeeping",
+    faccion: "Servicios Domesticos Victoria",
     imagen: "placeholder",
     descripcion: "DPS físico con ataques de área."
   },
@@ -68,7 +68,7 @@ const personajes = [
     rol: "attack",
     rareza: "A",
     elemento: "Eléctrico",
-    faccion: "Belobog Heavy Industries",
+    faccion: "Industrias Belobog",
     imagen: "placeholder",
     descripcion: "Atacante eléctrico con combo extendidos."
   },
@@ -77,7 +77,7 @@ const personajes = [
     rol: "support",
     rareza: "A",
     elemento: "Hielo",
-    faccion: "Section 6",
+    faccion: "Sección 6",
     imagen: "placeholder",
     descripcion: "Soporte de hielo que potencia el daño del equipo."
   },
@@ -86,7 +86,7 @@ const personajes = [
     rol: "stun",
     rareza: "S",
     elemento: "Hielo",
-    faccion: "Victoria Housekeeping",
+    faccion: "Servicios Domesticos Victoria",
     imagen: "placeholder",
     descripcion: "Especialista en aturdimiento con ataques precisos."
   },
@@ -95,7 +95,7 @@ const personajes = [
     rol: "support",
     rareza: "S",
     elemento: "Eléctrico",
-    faccion: "Victoria Housekeeping",
+    faccion: "Servicios Domesticos Victoria",
     imagen: "placeholder",
     descripcion: "Soporte eléctrico con buffs para el equipo."
   },
@@ -140,7 +140,7 @@ const personajes = [
     rol: "defense",
     rareza: "S",
     elemento: "Físico",
-    faccion: "Sons of Calydon",
+    faccion: "Hijos de Calydon",
     imagen: "placeholder",
     descripcion: "Tanque físico con gran resistencia."
   },
@@ -149,7 +149,7 @@ const personajes = [
     rol: "anomaly",
     rareza: "S",
     elemento: "Fuego",
-    faccion: "Sons of Calydon",
+    faccion: "Hijos de Calydon",
     imagen: "placeholder",
     descripcion: "Especialista en anomalías de fuego."
   }
@@ -232,8 +232,14 @@ function setupFiltros() {
 
 // Función para abrir la guía de un personaje
 function abrirGuiaPersonaje(personaje) {
-  window.location.href = `personaje.html?character=${encodeURIComponent(personaje.nombre)}`;
+  // Nombre exacto de la carpeta = nombre del personaje
+  const folderName = personaje.nombre;
+  const fileName = `${personaje.nombre}.html`;
+
+  window.location.href = `personajes/${folderName}/${fileName}`;
 }
+
+
 
 // Función de búsqueda de personajes
 function buscarPersonajes(termino) {
