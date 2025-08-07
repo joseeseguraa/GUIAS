@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title id="page-title">Personaje - Guía Completa | ZZZ</title>
+  <link rel="stylesheet" href="character-style.css" />
+
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <a href="../personajes.html" class="nav-back">← Volver a Personajes</a>
+      <h2>Guía de Personaje</h2>
+    </div>
+  </header>
+
+  <div class="character-header">
+    <div class="character-hero">
+      <div class="character-portrait">
+        <div class="character-rarity-badge">S</div>
+        <span style="font-size: 2rem;">🗡️</span>
+      </div>
+      <div class="character-details">
+        <h1>Cargando...</h1>
+        <div class="character-tags">
+          <span class="tag element-ice">❄️ Cargando</span>
+          <span class="tag role-attack">⚔️ Cargando</span>
+          <span class="tag">Cargando</span>
+        </div>
+        <p class="character-description">
+          Cargando descripción del personaje...
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <!-- Build Recomendada -->
+    <div class="section-card">
+      <h2 class="section-title">
+        <span class="section-icon">🛡️</span>
+        Build Recomendada
+      </h2>
+      <div class="build-grid">
+        <div class="equipment-section">
+          <h3>🗡️ Arma Principal</h3>
+          <div class="equipment-list">
+            <!-- Las armas se cargarán aquí dinámicamente -->
+          </div>
+        </div>
+
+        <div class="equipment-section">
+          <h3>💎 Discos Drive</h3>
+          <div class="equipment-list">
+            <!-- Los discos se cargarán aquí dinámicamente -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Prioridad de Stats -->
+    <div class="section-card">
+      <h2 class="section-title">
+        <span class="section-icon">📊</span>
+        Prioridad de Estadísticas
+      </h2>
+      <div class="stats-priority">
+        <!-- Las estadísticas se cargarán aquí dinámicamente -->
+      </div>
+    </div>
+
+    <!-- Composiciones de Equipo -->
+    <div class="section-card">
+      <h2 class="section-title">
+        <span class="section-icon">👥</span>
+        Mejores Equipos
+      </h2>
+      <div class="team-grid">
+        <!-- Los equipos se cargarán aquí dinámicamente -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="personajes-database.js"></script>
+  <script src="script-personajes.js"></script>
+  <script>
+    // Cargar personaje desde URL
+    document.addEventListener('DOMContentLoaded', function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const personajeName = urlParams.get('character');
+      
+      if (personajeName) {
+        cargarPersonajeEnPagina(personajeName);
+      } else {
+        // Si no hay parámetro, mostrar error o redirigir
+        console.error('No se especificó personaje');
+        window.location.href = '../personajes.html';
+      }
+    });
+  </script>
+</body>
+</html>

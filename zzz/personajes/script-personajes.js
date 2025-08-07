@@ -1,161 +1,7 @@
-// Base de datos de personajes ZZZ
-const personajes = [
-  {
-    nombre: "Anby Demara",
-    rol: "stun",
-    rareza: "A",
-    elemento: "Eléctrico",
-    faccion: "Liebres Astutas",
-    imagen: "placeholder", // Aquí irían las URLs reales de las imágenes
-    descripcion: "Agente de aturdimiento eléctrico especializada en combos."
-  },
-  {
-    nombre: "Billy Kid",
-    rol: "attack",
-    rareza: "A",
-    elemento: "Físico",
-    faccion: "Liebres Astutas",
-    imagen: "placeholder",
-    descripcion: "Atacante a distancia con armas duales."
-  },
-  {
-    nombre: "Nicole Demara",
-    rol: "support",
-    rareza: "A",
-    elemento: "Éter",
-    faccion: "Liebres Astutas",
-    imagen: "placeholder",
-    descripcion: "Soporte que debilita enemigos con corrupción de éter."
-  },
-  {
-    nombre: "Ellen Joe",
-    rol: "attack",
-    rareza: "S",
-    elemento: "Hielo",
-    faccion: "Servicios Domesticos Victoria",
-    imagen: "placeholder",
-    descripcion: "DPS principal de hielo con ataques devastadores."
-  },
-  {
-    nombre: "Koleda Belobog",
-    rol: "stun",
-    rareza: "S",
-    elemento: "Fuego",
-    faccion: "Industrias Belobog",
-    imagen: "placeholder",
-    descripcion: "Tanque/aturdidor de fuego con gran resistencia."
-  },
-  {
-    nombre: "Ben Bigger",
-    rol: "defense",
-    rareza: "A",
-    elemento: "Fuego",
-    faccion: "Industrias Belobog",
-    imagen: "placeholder",
-    descripcion: "Defensor especializado en proteger al equipo."
-  },
-  {
-    nombre: "Corin Wickes",
-    rol: "attack",
-    rareza: "A",
-    elemento: "Físico",
-    faccion: "Servicios Domesticos Victoria",
-    imagen: "placeholder",
-    descripcion: "DPS físico con ataques de área."
-  },
-  {
-    nombre: "Anton Ivanov",
-    rol: "attack",
-    rareza: "A",
-    elemento: "Eléctrico",
-    faccion: "Industrias Belobog",
-    imagen: "placeholder",
-    descripcion: "Atacante eléctrico con combo extendidos."
-  },
-  {
-    nombre: "Soukaku",
-    rol: "support",
-    rareza: "A",
-    elemento: "Hielo",
-    faccion: "Sección 6",
-    imagen: "placeholder",
-    descripcion: "Soporte de hielo que potencia el daño del equipo."
-  },
-  {
-    nombre: "Lycaon",
-    rol: "stun",
-    rareza: "S",
-    elemento: "Hielo",
-    faccion: "Servicios Domesticos Victoria",
-    imagen: "placeholder",
-    descripcion: "Especialista en aturdimiento con ataques precisos."
-  },
-  {
-    nombre: "Rina",
-    rol: "support",
-    rareza: "S",
-    elemento: "Eléctrico",
-    faccion: "Servicios Domesticos Victoria",
-    imagen: "placeholder",
-    descripcion: "Soporte eléctrico con buffs para el equipo."
-  },
-  {
-    nombre: "Zhu Yuan",
-    rol: "attack",
-    rareza: "S",
-    elemento: "Éter",
-    faccion: "N.E.P.S.",
-    imagen: "placeholder",
-    descripcion: "DPS de éter con ataques a distancia."
-  },
-  {
-    nombre: "Qingyi",
-    rol: "stun",
-    rareza: "S",
-    elemento: "Eléctrico",
-    faccion: "N.E.P.S.",
-    imagen: "placeholder",
-    descripcion: "Androide especializada en aturdimiento eléctrico."
-  },
-  {
-    nombre: "Jane Doe",
-    rol: "anomaly",
-    rareza: "S",
-    elemento: "Físico",
-    faccion: "Criminal Investigation Special Response Team",
-    imagen: "placeholder",
-    descripcion: "Especialista en anomalías físicas."
-  },
-  {
-    nombre: "Seth Lowell",
-    rol: "defense",
-    rareza: "A",
-    elemento: "Eléctrico",
-    faccion: "N.E.P.S.",
-    imagen: "placeholder",
-    descripcion: "Defensor eléctrico con escudo para el equipo."
-  },
-  {
-    nombre: "Caesar King",
-    rol: "defense",
-    rareza: "S",
-    elemento: "Físico",
-    faccion: "Hijos de Calydon",
-    imagen: "placeholder",
-    descripcion: "Tanque físico con gran resistencia."
-  },
-  {
-    nombre: "Burnice White",
-    rol: "anomaly",
-    rareza: "S",
-    elemento: "Fuego",
-    faccion: "Hijos de Calydon",
-    imagen: "placeholder",
-    descripcion: "Especialista en anomalías de fuego."
-  }
-];
+// Script actualizado para usar la base de datos centralizada
+// Importar desde personajes-database.js
 
-// Función para crear la card de un personaje
+// Función para crear la card de un personaje (actualizada)
 function crearCardPersonaje(personaje) {
   const card = document.createElement('div');
   card.className = `character-card ${personaje.rol}`;
@@ -163,7 +9,10 @@ function crearCardPersonaje(personaje) {
   
   card.innerHTML = `
     <div class="character-image ${personaje.rareza.toLowerCase()}-border">
-      <!-- Aquí irá la imagen del personaje -->
+      ${personaje.imagen !== 'placeholder' ? 
+        `<img src="${personaje.imagen}" alt="${personaje.nombre}">` : 
+        `<div class="character-placeholder">${personaje.icono}</div>`
+      }
       <div class="character-rarity ${personaje.rareza.toLowerCase()}">${personaje.rareza}</div>
     </div>
     <div class="character-info">
@@ -183,26 +32,23 @@ function crearCardPersonaje(personaje) {
   return card;
 }
 
-// Función para obtener el nombre del rol en español
-function getRoleName(rol) {
-  const roles = {
-    'attack': 'Ataque',
-    'stun': 'Aturdimiento',
-    'anomaly': 'Anomalía',
-    'support': 'Soporte',
-    'defense': 'Defensa'
-  };
-  return roles[rol] || rol;
+// Función actualizada para abrir la guía (ahora usa una sola página)
+function abrirGuiaPersonaje(personaje) {
+  // Usar la plantilla única con parámetro de URL
+  window.location.href = `personajes/character.html?character=${encodeURIComponent(personaje.nombre)}`;
 }
 
-// Función para cargar todos los personajes
+// Función para cargar todos los personajes (actualizada para usar la base de datos)
 function cargarPersonajes(filtro = 'all') {
   const grid = document.getElementById('characters-grid');
   grid.innerHTML = '';
   
+  // Obtener personajes de la base de datos
+  const todosPersonajes = obtenerTodosPersonajes();
+  
   const personajesFiltrados = filtro === 'all' 
-    ? personajes 
-    : personajes.filter(p => p.rol === filtro);
+    ? todosPersonajes 
+    : todosPersonajes.filter(p => p.rol === filtro);
   
   personajesFiltrados.forEach((personaje, index) => {
     const card = crearCardPersonaje(personaje);
@@ -211,7 +57,7 @@ function cargarPersonajes(filtro = 'all') {
   });
 }
 
-// Función para manejar filtros
+// Función para manejar filtros (sin cambios)
 function setupFiltros() {
   const filterButtons = document.querySelectorAll('.filter-btn');
   
@@ -230,20 +76,11 @@ function setupFiltros() {
   });
 }
 
-// Función para abrir la guía de un personaje
-function abrirGuiaPersonaje(personaje) {
-  // Nombre exacto de la carpeta = nombre del personaje
-  const folderName = personaje.nombre;
-  const fileName = `${personaje.nombre}.html`;
-
-  window.location.href = `personajes/${folderName}/${fileName}`;
-}
-
-
-
-// Función de búsqueda de personajes
+// Función de búsqueda actualizada
 function buscarPersonajes(termino) {
-  const resultados = personajes.filter(personaje => 
+  const todosPersonajes = obtenerTodosPersonajes();
+  
+  const resultados = todosPersonajes.filter(personaje => 
     personaje.nombre.toLowerCase().includes(termino.toLowerCase()) ||
     personaje.elemento.toLowerCase().includes(termino.toLowerCase()) ||
     personaje.faccion.toLowerCase().includes(termino.toLowerCase()) ||
@@ -253,21 +90,73 @@ function buscarPersonajes(termino) {
   return resultados;
 }
 
-// Inicializar la página
+// Función para obtener el nombre del rol en español
+function getRoleName(rol) {
+  const roles = {
+    'attack': 'Ataque',
+    'stun': 'Aturdimiento',
+    'anomaly': 'Anomalía',
+    'support': 'Soporte',
+    'defense': 'Defensa'
+  };
+  return roles[rol] || rol;
+}
+
+// Inicializar la página (sin cambios)
 document.addEventListener('DOMContentLoaded', function() {
-  cargarPersonajes();
-  setupFiltros();
-  
-  // Añadir efectos hover a las cards (se añadirán dinámicamente)
-  document.addEventListener('mouseenter', function(e) {
-    if (e.target.closest('.character-card')) {
-      e.target.closest('.character-card').style.transform = 'translateY(-8px) scale(1.02)';
-    }
-  }, true);
-  
-  document.addEventListener('mouseleave', function(e) {
-    if (e.target.closest('.character-card')) {
-      e.target.closest('.character-card').style.transform = 'translateY(0) scale(1)';
-    }
-  }, true);
+  const urlParams = new URLSearchParams(window.location.search);
+  const personajeName = urlParams.get('character');
+
+  if (personajeName) {
+    cargarPersonajeEnPagina(personajeName);
+  } else {
+    cargarPersonajes();
+    setupFiltros();
+
+    // Efectos hover
+    document.addEventListener('mouseenter', function(e) {
+      if (e.target.closest('.character-card')) {
+        e.target.closest('.character-card').style.transform = 'translateY(-8px) scale(1.02)';
+      }
+    }, true);
+
+    document.addEventListener('mouseleave', function(e) {
+      if (e.target.closest('.character-card')) {
+        e.target.closest('.character-card').style.transform = 'translateY(0) scale(1)';
+      }
+    }, true);
+  }
 });
+
+
+// Función opcional para agregar barra de búsqueda
+function setupBusqueda() {
+  const searchInput = document.getElementById('character-search');
+  if (searchInput) {
+    searchInput.addEventListener('input', function() {
+      const termino = this.value.trim();
+      if (termino === '') {
+        cargarPersonajes();
+      } else {
+        const resultados = buscarPersonajes(termino);
+        mostrarResultados(resultados);
+      }
+    });
+  }
+}
+
+function mostrarResultados(resultados) {
+  const grid = document.getElementById('characters-grid');
+  grid.innerHTML = '';
+  
+  resultados.forEach((personaje, index) => {
+    const card = crearCardPersonaje(personaje);
+    card.style.animationDelay = `${index * 0.1}s`;
+    grid.appendChild(card);
+  });
+  
+  // Mostrar mensaje si no hay resultados
+  if (resultados.length === 0) {
+    grid.innerHTML = '<p class="no-results">No se encontraron personajes</p>';
+  }
+}
